@@ -1,0 +1,7 @@
+require("local.note.mappings")
+require("local.note.highlight")
+require("local.note.autodate")
+require("local.note.todo")
+require("local.note.daily")
+require("local.note.autoalign")
+require("local.tests.filter")

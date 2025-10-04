@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: nvim
+created: 2024-08-23T23:39:42+03:00
