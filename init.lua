@@ -15,6 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
+-- vim.notify = require("local.tests.logger").log
 require("plugins")
 
 -- Local plugins config
