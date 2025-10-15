@@ -100,6 +100,19 @@ function is_allowed_for_highlighting()
     end
 end
 
+function safe_matchdelete(id)
+    if id and id ~= 0 then
+        -- Проверяем, существует ли хайлайт с таким ID
+        local status, result = pcall(vim.fn.matchdelete, id)
+        if not status then
+            -- Игнорируем ошибку "ID not found", логируем другие ошибки
+            if not string.find(result, "ID not found") then
+                print("Error deleting match:", result)
+            end
+        end
+    end
+end
+
 function note_highlighting()
   -- for _, id in ipairs(highlight_ids) do
   --   vim.fn.matchdelete(id)
@@ -126,7 +139,8 @@ function note_highlighting()
           print('not', unique_tag, highlight_ids[unique_tag])
           table.insert(tag_colors, unique_color)
           unique_tags[unique_tag] = nil
-          vim.fn.matchdelete(highlight_ids[unique_tag]) 
+          safe_matchdelete(highlight_ids[unique_tag])
+          -- vim.fn.matchdelete(highlight_ids[unique_tag]) 
           highlight_ids[unique_tag] = nil
         end 
       end
